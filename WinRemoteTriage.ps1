@@ -48,9 +48,9 @@ Write-Debug "Copying kape from Forense01 to work directory"
 Copy-Item "\\forense01\j$\kape8.zip" -Destination "c:\kape\"
 
 Write-Debug "Unziping and runnink our kape triage tool"
-cd c:\kape
+Set-Location c:\kape
 Expand-Archive c:\kape\kape8.zip
-cd C:\kape\kape8\kape8
+Set-Location C:\kape\kape8\kape8
 .\kape.exe --tsource C: --tdest c:\kape\output\%d%m --target !BasicCollection,!SANS_Triage,Avast,AviraAVLogs,Bitdefender,ComboFix,ESET,FSecure,HitmanPro,Malwarebytes, McAfee,McAfee_ePO,RogueKiller,SentinelOne,Sophos,SUPERAntiSpyware,Symantec_AV_Logs,TrendMicro,VIPRE, Webroot,WindowsDefender,Ammyy,AsperaConnect,BoxDrive,CiscoJabber,CloudStorage,ConfluenceLogs,Discord, Dropbox, Exchange,ExchangeClientAccess,ExchangeTransport,FileZilla,GoogleDrive,iTunesBackup,JavaWebCache,Kaseya,LogMeIn,Notepad++, OneDrive,OutlookPSTOST,ScreenConnect,Skype,TeamViewerLogs,TeraCopy,VNCLogs, Chrome,ChromeExtensions,Edge,Firefox,InternetExplorer,WebBrowsers,ApacheAccessLog,IISLogFiles,ManageEngineLogs, MSSQLErrorLog,NGINXLogs,PowerShellConsole,KapeTriage,MiniTimelineCollection,RemoteAdmin, VirtualDisks, Gigatribe,TorrentClients,Torrents,$Boot,$J,$LogFile,$MFT,$SDS,$T,Amcache,ApplicationEvents,BCD,CombinedLogs, EncapsulationLogging,EventLogs,EventLogs-RDP,EventTraceLogs, EvidenceOfExecution,FileSystem,GroupPolicy,LinuxOnWindowsProfileFiles,LnkFilesAndJumpLists,LogFiles,MemoryFiles, MOF,OfficeAutosave,OfficeDocumentCache,Prefetch,RDPCache,RDPLogs,RecentFileCache,Recycle, RecycleBin, RecycleBinContent,RecycleBinMetadata,RegistryHives,RegistryHivesSystem,RegistryHivesUser,ScheduledTasks,SDB, SignatureCatalog,SRUM,StartupInfo,Syscache,ThumbCache,USBDevicesLogs,WBEM,WER,WindowsFirewall,  WindowsIndexSearch,WindowsNotifcationsDB,WindowsTimeline,XPRestorePoints --vss
 
 Write-Debug "Zipping output evidence"
@@ -58,7 +58,7 @@ Compress-Archive c:\kape\output\* c:\kape\output\$outputname.zip
 
 Write-Debug "Copying our evidence to Forense01 as HOSTNAME.zip"
 Copy-Item c:\kape\output\$outputname.zip -Destination "\\forense01\j$\"
-cd c:\
+Set-Location c:\
 
 Write-Debug "Cleaning up working directory"
 Remove-Item c:\kape -Recurse -Force -Confirm:$false
