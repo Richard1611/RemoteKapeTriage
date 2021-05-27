@@ -26,4 +26,4 @@ RemoteKapeTriage.ps1 -colect full+ -target computer1
 RemoteKapeTriage.ps1 -collect basic -target computer1
 
 * Basic Collection + save directory specification:
-Remotekapetriage.ps1 -fileshare \\forensic\server\c$\ -collect basic -target computer1
+Remotekapetriage.ps1 -fileshare \\forensicsserver\c$\ -collect basic -target computer1
