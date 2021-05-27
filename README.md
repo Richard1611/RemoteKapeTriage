@@ -7,9 +7,8 @@ Arguments
 * -help: Display help and command refecences
 * -target: machine to acquire
 * -fileshare: Where do you want to save your evidence. Your Default is: [$fileshare]
-* -collect: The evidence collection level
-
-⋅⋅basic: Just eventlogs
+* -collect: The evidence collection level  
+* ⋅⋅basic: Just eventlogs
 ⋅⋅⋅basic+: basic + memdump
 ⋅⋅⋅medium: kape triage !SansTriage Module. (Reference:https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape)
 ⋅⋅⋅medium+: medium + memdump
