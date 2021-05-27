@@ -8,22 +8,22 @@ Arguments
 * -target: machine to acquire
 * -fileshare: Where do you want to save your evidence. Your Default is: [$fileshare]
 * -collect: The evidence collection level 
-basic: Just eventlogs
-basic+: basic + memdump
-medium: kape triage !SansTriage Module. (Reference:https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape)
-medium+: medium + memdump
-full: kape triage with all target modules
-full+: full + memdump
-memdump: memmory dump with kape+winpmem: (Reference: https://github.com/EricZimmerman/KapeFiles/blob/master/Modules/LiveResponse/WinPmem.mkape )
+...basic: Just eventlogs
+...basic+: basic + memdump
+...medium: kape triage !SansTriage Module. (Reference:https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape)
+...medium+: medium + memdump
+...full: kape triage with all target modules
+...full+: full + memdump
+...memdump: memmory dump with kape+winpmem: (Reference: https://github.com/EricZimmerman/KapeFiles/blob/master/Modules/LiveResponse/WinPmem.mkape )
 
 # Usage Examples:
 
 * Full collection + memdump:
-RemoteKapeTriage.ps1 -colect full+ -target computer1
+RemoteKapeTriage.ps1 -target computer1 -colect full+ 
 
 * Basic Collection:
 
-RemoteKapeTriage.ps1 -collect basic -target computer1
+RemoteKapeTriage.ps1 -target computer1 -collect basic 
 
 * Basic Collection + save directory specification:
-Remotekapetriage.ps1 -fileshare \\\Remoteserver\c$\ -collect basic -target computer1
+Remotekapetriage.ps1 -target computer1 -collect basic -fileshare \\\Remoteserver\c$\ 
