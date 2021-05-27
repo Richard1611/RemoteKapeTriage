@@ -1,5 +1,5 @@
 # RemoteKapeTriage
-A powershell tool that the remote forensic triage adquisitions from Remote windows machines, using [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) tool.
+A powershell tool that automate the remote forensic triage adquisitions from Remote windows machines, using [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) tool.
 
 
 # Usage Help
