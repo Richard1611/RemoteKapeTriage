@@ -16,13 +16,14 @@ full: kape triage with all target modules
 full+: full + memdump
 memdump: memmory dump with kape+winpmem: (Reference: https://github.com/EricZimmerman/KapeFiles/blob/master/Modules/LiveResponse/WinPmem.mkape )
 
-#Usage Examples:
+# Usage Examples:
 
-..* Full collection + memdump:
+* Full collection + memdump:
 RemoteKapeTriage.ps1 -colect full+ -target computer1
 
-..* Basic Collection:
+* Basic Collection:
 
 RemoteKapeTriage.ps1 -collect basic -target computer1
 
+* Basic Collection + save directory specification:
 Remotekapetriage.ps1 -fileshare \\forensic\server\c$\ -collect basic -target computer1
