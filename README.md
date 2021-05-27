@@ -1,2 +1,2 @@
-# WinRemotTriage
-A tool that performs triage evidence acquisitions on a remote windows machine, using other open-source tools.
+# RemoteKapeTriage
+A tool that performs triage evidence acquisitions on Remote windows machines, using Kape tool.
