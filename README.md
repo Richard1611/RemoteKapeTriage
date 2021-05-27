@@ -8,6 +8,7 @@ A powershell tool that the remote forensic triage adquisitions from Remote windo
   ..* -target: machine to acquire
   ..* -fileshare: Where do you want to save your evidence. Your Default is: [$fileshare]
   ..* -collect: The evidence collection level 
+  ⋅⋅* Unordered sub-list. 
     basic: Just eventlogs
     basic+: basic + memdump
     medium: kape triage !SansTriage Module. (Reference:https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape)
