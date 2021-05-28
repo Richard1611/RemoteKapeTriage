@@ -7,17 +7,17 @@ Due deficiences in KAPE built in remote adquisitions capabilities while adquirin
 **Usage Help**
 
 **Arguments**
-* **-help:** Display help and command refecences
-* **-target:** machine to acquire
-* **-fileshare:** Where do you want to save your evidence. Your Default is: [$fileshare]
-* **-collect:** The evidence collection level
-     -basic: Just eventlogs. 
-basic+: basic + memdump. 
-medium: kape triage !SansTriage Module. 
-medium+: medium + memdump. 
-full: kape triage with all target modules. 
-full+: full + memdump. 
-memdump: memmory dump with kape+winpmem. 
+1. help: Display help and command refecences
+2. target: machine to acquire
+3. fileshare: Where do you want to save your evidence. Your Default is: [$fileshare]
+4. collect: The evidence collection level  
+   - basic: Just eventlogs. 
+   - basic+: basic + memdump. 
+   - medium: kape triage !SansTriage Module. 
+   - medium+: medium + memdump. 
+   - full: kape triage with all target modules. 
+   - full+: full + memdump. 
+   - memdump: memmory dump with kape+winpmem. 
 
 **Examples:**
 
