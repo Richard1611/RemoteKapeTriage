@@ -34,9 +34,9 @@ param(
     [string]$kapelocalpath = "C:\kape\kape\",
     [string]$kapelocalfile = "kape.exe",    
     [string]$target, #= $(throw "-target is required. For help use arguments -target -help"),
-    [string]$fileshare = "\\forense01.corp.popular.local\j$\triagetools",
+    [string]$fileshare = "\\forensicserver.mydomain.local\c$\triagetools", #<----------------------------Change this
     [string]$KapePackage = "$fileshare\kape.zip",
-    [string]$Collect #= $(throw "-collect is required. For help, use -collect -help")
+    [string]$Collect #<------I should have use validatesets, BUT it didnt work as i expected with -help argument and other validations.
 )
 
 $ErrorActionPreference = "Continue"
@@ -94,6 +94,7 @@ Function Disable-WinRM {
   Invoke-CimMethod @MethodArgs
 }
 
+#HELP ARGUMENT CONTENT
 if ($help) {
 
   Write-Output "
@@ -123,7 +124,7 @@ if ($help) {
   exit
 }
   
-
+#MANDATORY ARGUMENTS VALIDATION
 If ((-not ($target)) -or (-not ($Collect)) ){
   Write-Host "'-Target' and '-collect' arguments are mandatory. For references, use -help argument." -ForegroundColor Red
   exit
@@ -134,20 +135,23 @@ if ($collect -notin 'full','full+','medium','medium+','basic','basic+','memdump'
 }
 
 
-
+#AUTHENTICATION WITH TARGET MACHINE AND FILE SERVER WHERE EVIDENCE WILL BE ARCHIVED
 Write-Host "Please, provide PC-Admin account credentials" -ForegroundColor Yellow
 $cred = Get-Credential
 
 
 If (Test-Connection -ComputerName $target -Count 2 -ErrorAction SilentlyContinue) {
+  #USING WMI TO ENABLE WINRM ON REMOTE MACHINE
   Write-Host "Enabling WinRM on Remote Device using WMI" -ForegroundColor Yellow
   Enable-WinRM | Out-Null 
-
+  
+  #CREATING WinRM SESSION 
   Write-Host "Creating WinRM Session for Remote Administration" -ForegroundColor Yellow
   $WinRMSession = New-PSSession -Computername $target -Authentication Kerberos -Credential $cred
 
   Write-Host "Invoking powershell triage scripts on remote machine through WinRM Session" -ForegroundColor Yellow
-
+  
+  #VALIDATING PREVIOUS KAPE AND WORK DIRECTORIES EXISTENCE ON REMOTE MACHINE
   function get-kape-environment {
 
     function get-kape {
@@ -176,19 +180,20 @@ If (Test-Connection -ComputerName $target -Count 2 -ErrorAction SilentlyContinue
           Write-Host "KAPE alredy exist on the remote machine" -ForegroundColor Yellow -BackgroundColor DarkBlue  
       }
     }
-
+    
+    #CREATING ATTACHED DRIVE WITH FILESHARE ON REMOTE MACHINE
     Write-Host "creating [$using:fileshare] as attached drive" -ForegroundColor Yellow
     New-PSDrive -Name z -PSProvider FileSystem -Root $using:fileshare -Credential $using:cred
-
+    
+    #EXECUTING KAPE EXISTENCE VALIDATION FUNCTION BEFORE RUNNING
     check-kape
     Exit-PSSession
     
     
   }
 
-
-
-    
+  #EXECUTING COLLECTION FUNCTIONS ACCORDINGLY SELECTED COLLECTION LEVEL
+  
   Switch ($Collect) {
     "full" {        
       Invoke-Command -Session $WinRMSession -ScriptBlock ${function:get-kape-environment}
@@ -289,27 +294,9 @@ If (Test-Connection -ComputerName $target -Count 2 -ErrorAction SilentlyContinue
     }
   }
 
-<#   if ($memdump -eq $true) {
-    
-    Invoke-Command -Session $WinRMSession -ScriptBlock{
-      $outputname = $env:COMPUTERNAME 
-      Write-Host "creating [$using:fileshare] as attached drive" -ForegroundColor Yellow
-      New-PSDrive -Name z -PSProvider FileSystem -Root $using:fileshare -Credential $using:cred
-      New-Item c:\kape\memdump -ItemType Directory -ea 0
-      Copy-Item "z:\7z.zip" -Destination "c:\kape\memdump"
-      Copy-Item "z:\winpmem.exe" -Destination "c:\kape\memdump"
-      Set-Location c:\kape\memdump
-      Expand-Archive c:\kape\memdump\7z.zip > $null 2>&1 
-      Write-Host "Starting memory dump on remote machine" -ForegroundColor Yellow        
-      .\winpmem.exe $outputname-memdump.raw
-      Set-Location c:\kape\memdump\7z
-      .\7za.exe a -tzip ..\$outputname-memdup.zip ..\$outputname-memdump.raw -sdel
-      Write-Host "Saving memory dump at [$using:fileshare]"
-      Copy-Item ..\$outputname-memdump.zip -Destination z:\
-    }      
-  } #>
 
-
+  #CLEANING WINRM SESSIONS AND DISABLING SERVICE ON REMOTE COMPUTERS
+  
   Write-Host "Removing WinRM Session" -ForegroundColor Yellow
   Remove-PSSession $target
 
