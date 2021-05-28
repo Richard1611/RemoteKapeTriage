@@ -44,5 +44,5 @@ Remotekapetriage.ps1 -target computer1 -collect basic -fileshare \\\Remoteserver
 ![Usage Example](https://github.com/Richard1611/RemoteKapeTriage/blob/main/Usage%20example.PNG)
 
 ## Notes
-Due im not the most experienced guy with powershell, theres a lot of pending improvements to do (like error/exceptions handling).
-Im open to receive pull requests if you want to collaborate.
+* Due im not the most experienced guy with powershell, theres a lot of pending improvements to do (like error/exceptions handling).
+* Im open to receive pull requests if you want to collaborate.
