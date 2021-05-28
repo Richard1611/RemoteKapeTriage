@@ -12,7 +12,7 @@ Due deficiences in KAPE built in remote adquisitions capabilities while adquirin
    - Substitute the KAPE Winpmem.mkape module at <KAPE_working_directory>/Modules/LiveResponse/WinPmem.mkape> for this version Winpmem.mkape](https://github.com/Richard1611/RemoteKapeTriage/blob/main/WinPmem.mkape) or simply edit the original file.
 
 
-**Usage Help**
+## Usage Help
 
 **Arguments**
 1. help: Display help and command refecences
