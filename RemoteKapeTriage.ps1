@@ -34,7 +34,7 @@ param(
     [string]$kapelocalpath = "C:\kape\kape\",
     [string]$kapelocalfile = "kape.exe",    
     [string]$target, #= $(throw "-target is required. For help use arguments -target -help"),
-    [string]$fileshare = "\\forensicserver.mydomain.local\c$\triagetools", #<----------------------------Change this
+    [string]$fileshare = "\\forensicserver.mydomain.local\c$\triagetools", #<----------------------------Change this or especify it using -fileshare argument during execution.
     [string]$KapePackage = "$fileshare\kape.zip",
     [string]$Collect #<------I should have use validatesets, BUT it didnt work as i expected with -help argument and other validations.
 )
