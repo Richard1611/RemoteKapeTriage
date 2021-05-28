@@ -4,11 +4,11 @@ A powershell tool that automate the remote forensic evidence adquisitions (triag
 Due limitations in KAPE built-in remote adquisitions capabilities while adquiring registry keys and other elements through UNC Path, I decided to automate the process of running kape on remote computers, but running the tools locally (Yes, is a bit confused) on the target machine and archiving the evidence in remote server using a UNC Path (\\\\).
 
 **Requirements**
-1. Run the tool within a powershell session with Admin privileges in both remote computer to acquire and computer/server where your evidences will be saved.
-2. Due Cred-SSP and DCOM ["Double-Hop" limitations](https://community.spiceworks.com/topic/601698-powershell-remoting-and-unc-paths), **you must authenticate twice**.
-3. Ensure proper WMI/RPC (Port 135) and WinRM (Port 5985/5986) exclusions through network and host Firewalls from Analyst computers to Remote Machines. As well as SMB between remote machine and fileshare server.
-4. Place [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) as .zip in a remote computer and specify the route in the variable **$fileshare** to use it as default archiving path or you can specify the fileshare path with the argument -fileshare. 
-5. For memdump capabilities (do it before point 4):
+1. Place [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) as .zip in a remote computer and specify the route in the variable **$fileshare** to use it as default archiving path or you can specify the fileshare path with the argument -fileshare. 
+2. Run the tool within a powershell session with Admin privileges in both remote computer to acquire and computer/server where your evidences will be saved.
+3. Due Cred-SSP and DCOM ["Double-Hop" limitations](https://community.spiceworks.com/topic/601698-powershell-remoting-and-unc-paths), **you must authenticate twice**.
+4. Ensure proper WMI/RPC (Port 135) and WinRM (Port 5985/5986) exclusions through network and host Firewalls from Analyst computers to Remote Machines. As well as SMB between remote machine and fileshare server.
+5. For memdump capabilities (do it before point 1):
    - Download [Winpmem](https://github.com/Velocidex/WinPmem/releases) and save it within '<KAPE_working_directory>/Modules/bin' as "winpmem.exe"
    - Substitute the KAPE Winpmem.mkape module at <KAPE_working_directory>/Modules/LiveResponse/WinPmem.mkape> for this version [Winpmem.mkape](https://github.com/Richard1611/RemoteKapeTriage/blob/main/WinPmem.mkape) or simply edit the original file.
 
