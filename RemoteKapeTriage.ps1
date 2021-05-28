@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Executes Kape and Kape modules on a remote device and archives output.
+Executes Kape triage adquisitions and memory dumps on a remote device and archives output.
 
 .DESCRIPTION
 Collects forensic information from a remote machine.
