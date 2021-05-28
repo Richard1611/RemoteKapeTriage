@@ -6,7 +6,7 @@ Due deficiences in KAPE built in remote adquisitions capabilities while adquirin
 **Requirements**
 1. Run the tool within a powershell session with Admin privileges in both remote computer to acquire and computer/server where your evidences will be saved.
 2. Due Cred-SSP and DCOM ["Double-Hop" limitations](https://community.spiceworks.com/topic/601698-powershell-remoting-and-unc-paths), **you must authenticate twice**.
-3. Place [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) as .zip in a remote computer and specify the route in the variable **$fileshare** to use it as default archiving path. 
+3. Place [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) as .zip in a remote computer and specify the route in the variable **$fileshare** to use it as default archiving path or you can specify the fileshare path with the argument -fileshare. 
 4. For memdump capabilities:
    - Download [Winpmem](https://github.com/Velocidex/WinPmem/releases) and save it within '<KAPE_working_directory>/Modules/bin' as "winpmem.exe"
    - Substitute the KAPE Winpmem.mkape module at <KAPE_working_directory>/Modules/LiveResponse/WinPmem.mkape> for this version [Winpmem.mkape](https://github.com/Richard1611/RemoteKapeTriage/blob/main/WinPmem.mkape) or simply edit the original file.
