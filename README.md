@@ -38,7 +38,7 @@ RemoteKapeTriage.ps1 -target computer1 -colect full+
 **Basic Collection + save directory specification:**
 Remotekapetriage.ps1 -target computer1 -collect basic -fileshare \\\Remoteserver\c$\
 
-## How it works?
+## How it works??
 ![Information flow architecture](https://github.com/Richard1611/RemoteKapeTriage/blob/main/RemoteKapeTriage%20-%20Information%20flow%20architecture.PNG)
 ## Usage Example
 ![Usage Example](https://github.com/Richard1611/RemoteKapeTriage/blob/main/Usage%20example.PNG)
