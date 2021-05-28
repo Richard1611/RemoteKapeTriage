@@ -13,7 +13,7 @@ Due deficiences in KAPE built in remote adquisitions capabilities while adquirin
 4. collect: The evidence collection level  
    - basic: Just eventlogs. 
    - basic+: basic + memdump. 
-   - medium: kape triage [!SansTriage] (https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape) Module. 
+   - medium: kape triage [!SansTriage](https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Compound/!SANS_Triage.tkape) Module. 
    - medium+: medium + memdump. 
    - full: kape triage with all target modules. 
    - full+: full + memdump. 
