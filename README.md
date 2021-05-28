@@ -1,7 +1,7 @@
 # RemoteKapeTriage
 A powershell tool that automate the remote forensic evidence adquisitions (triage) from Remote windows machines, using [KAPE](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) tool.
 
-Due deficiences in KAPE built in remote adquisitions capabilities while adquiring registry keys and other elements through UNC Path, I decided to automate the process of running kape on remote computers, but running the tools locally (Yes, is a bit confused) on the target machine and archiving the evidence in remote server using a UNC Path (\\\\).
+Due limitations in KAPE built-in remote adquisitions capabilities while adquiring registry keys and other elements through UNC Path, I decided to automate the process of running kape on remote computers, but running the tools locally (Yes, is a bit confused) on the target machine and archiving the evidence in remote server using a UNC Path (\\\\).
 
 **Requirements**
 1. Run the tool within a powershell session with Admin privileges in both remote computer to acquire and computer/server where your evidences will be saved.
