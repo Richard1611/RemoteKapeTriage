@@ -26,7 +26,7 @@ Due limitations in KAPE built-in remote adquisitions capabilities while adquirin
    - medium+: medium + memdump. 
    - full: kape triage with all target modules. 
    - full+: full + memdump. 
-   - memdump: memmory dump with kape+winpmem. 
+   - memdump: memmory dump with kape+[Winpmem](https://github.com/Velocidex/WinPmem/releases). 
 
 **Examples:**
 
